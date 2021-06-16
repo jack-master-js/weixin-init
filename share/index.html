@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>加载中</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+  var id = getUrlParam('id');
+  var state = 5
+  var appid = 'xxxxxxxx'
+  var path = 'https://example.com?url=/index/&source=1'
+
+  var uri = encodeURIComponent(path);
+  var redirectUri = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${uri}&response_type=code&scope=snsapi_userinfo&state=${state}&connect_redirect=1#wechat_redirect`;
+  location.replace(redirectUri)
+
+  function getUrlParam(name) {
+    let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    let r = decodeURI(window.location.search).substr(1).match(reg);
+    if (r != null) return r[2];
+    return null;
+  }
+</script>
+
+</html>
